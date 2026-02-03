@@ -1,0 +1,25 @@
+-Tools -  Git, GitHub , anaconda, jupyter notebook, Vscode
+
+- Create folder with "Rollno_FirstName"
+
+- Download and install required tools
+
+- Create Python lab environment
+
+- Name of env:AIML_MLOPS_B3
+
+-to create env:
+conda create -n AIML_MLOPS_B3
+-to display library
+
+pip list
+
+-to change
+
+cd address
+
+then - jupyter notebook
+
+-set current path 
+
+-start the ide
