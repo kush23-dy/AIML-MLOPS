@@ -1,4 +1,4 @@
-name: ML pipelines
+name: mlpipeline.yml
 
 on: (push)
 
