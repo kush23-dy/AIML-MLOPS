@@ -4,7 +4,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-df = pd.read_csv("loan_data.csv")
+df = pd.read_csv("Exp2/loan_data.csv")
 
 le = LabelEncoder()
 for col in df.columns:
