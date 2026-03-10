@@ -1,0 +1,20 @@
+Lab 601 password raitlab@601
+
+localhost:6769
+
+Kush
+RAIT@601
+kus.tho.rt23@dypatil.edu
+
+http://localhost:6769/
+
+
+
+
+
+
+github access
+environment setup (py war, pip req)
+training stage (echo)
+
+generate a web file for fastAPI 
