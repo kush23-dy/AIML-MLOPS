@@ -2,14 +2,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-df = pd.read_csv("loan_data.csv")  
-df.head()
+df = pd.read_csv("loan_data.csv")
 
-df.info()
-df.isnull().sum()
-
-from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 for col in df.columns:
     if df[col].dtype == 'object':
@@ -18,31 +14,25 @@ for col in df.columns:
 X = df.drop("loan_status", axis=1)
 y = df["loan_status"]
 
-from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
-from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=42
 )
 
-from sklearn.linear_model import LogisticRegression
-model = LogisticRegression()
+model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
+
 y_pred = model.predict(X_test)
 
-from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 TN, FP, FN, TP = cm.ravel()
 
-from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(y_test, y_pred)
 specificity = TN / (TN + FP)
-
-from sklearn.metrics import f1_score
-
 f1 = f1_score(y_test, y_pred)
-print("Accuracy :", accuracy)
-print("Specificity :", specificity)
-print("F1 Score :", f1)
+
+print("Accuracy:", accuracy)
+print("Specificity:", specificity)
+print("F1 Score:", f1)
