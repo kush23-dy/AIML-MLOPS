@@ -1,21 +1,23 @@
-name: mlpipeline.yml
+name: mlpipeline
 
 on: [push]
 
-jobs: 
+jobs:
   build:
-    runs-on : ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+    runs-on: ubuntu-latest
 
-      - name: set up Python
-        uses: actions/setup-python@v2
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install --upgrade pip 
-            pip install -r Exp2/requirement.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r Exp2/requirement.txt
 
       - name: Run training script
         run: python Exp2/train.py
