@@ -3,16 +3,20 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import numpy as np
 import pickle
+import os
 
+# Create FastAPI app
 app = FastAPI()
 
-templates = Jinja2Templates(directory="templates")
+# Template path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
-# load trained model
+# Load model
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
-
+# Home page
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
     return templates.TemplateResponse(
@@ -20,7 +24,7 @@ def home(request: Request):
         {"request": request}
     )
 
-
+# Prediction API
 @app.post("/predict", response_class=HTMLResponse)
 def predict(
     request: Request,
